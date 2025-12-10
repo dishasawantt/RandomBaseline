@@ -19,18 +19,22 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 32px 120px;
+            padding: 20px 32px 120px;
+            min-height: calc(100vh - 80px);
         }
 
         .scene {
             opacity: 0;
             display: none;
             text-align: center;
+            padding-top: 20px;
         }
 
         .scene.active {
             opacity: 1;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation: fadeIn 0.5s ease;
         }
 
@@ -314,7 +318,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="scene active" id="scene0" style="display:flex;flex-direction:column;justify-content:flex-start;height:calc(100vh - 180px);padding-top:20px;">
+        <div class="scene active" id="scene0">
             <h1 class="scene-title" style="font-size:32px;margin-bottom:8px;">📘 <strong style="color:#10b981;">Random Baseline</strong></h1>
             <p style="font-size:16px;color:#1f2937;margin-bottom:20px;">Non-learning baseline policy — essential lower bound for algorithm evaluation</p>
             
@@ -534,6 +538,7 @@
                 currentScene++;
                 document.getElementById(`scene${currentScene}`).classList.add('active');
                 updateNavigation();
+                window.scrollTo(0, 0);
                 if (currentScene === 2) setTimeout(animateScene2, 200);
             }
         }
@@ -544,6 +549,7 @@
                 currentScene--;
                 document.getElementById(`scene${currentScene}`).classList.add('active');
                 updateNavigation();
+                window.scrollTo(0, 0);
             }
         }
 
